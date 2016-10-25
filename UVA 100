@@ -1,0 +1,36 @@
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+typedef long long ll;
+int f(ll n)
+{
+    if(n==1)
+    return 1;
+    return (n%2==0)?f(n>>1)+1:f(3*n+1)+1;
+}
+int main()
+{
+    int i,j;
+    while(scanf("%d %d",&i,&j)!=EOF)
+    {
+        int m,n;
+        int max = 0;
+        if(i>j)
+        {
+           m = j;
+           n = i;
+        }
+        else
+        {
+            m=i;
+            n=j;
+        }
+        for(ll k=m;k<=n;k++)
+        {
+            int a = f(k);
+            if(max<a)
+            max=a;
+        }
+        cout<<i<<" "<<j<<" "<<max<<endl;
+    }
+}
